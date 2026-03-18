@@ -52,6 +52,7 @@ export default function CardPanel(){
             {mockVenueRepo.map((venueItem) => (
                 <Link key = {venueItem.vid} href = {`/venue/${venueItem.vid}`}>
                     <Card
+                        vid = {venueItem.vid}
                         venueName = {venueItem.name}
                         imgSrc = {venueItem.image}
                         onRatingChange={handleRatingChange}
