@@ -10,3 +10,5 @@ export default function VenuePage(){
         </main>
     );
 }
+
+export const dynamic = 'force-dynamic';
