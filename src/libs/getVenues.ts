@@ -1,23 +1,15 @@
-import { VenueJson } from "../../interface";
-
-const getVenues = async (): Promise<VenueJson> => {
-  try {
+export default async function getVenues() {
+  try{
     const response = await fetch(
-      "https://a08-venue-explorer-backend.vercel.app/api/v1/venues",
-      { cache: "no-store" }
+        "https://a08-venue-explorer-backend.vercel.app/api/v1/venues",
+        { cache: "no-store" }
     );
 
-    const text = await response.text();
-
-    try {
-      return JSON.parse(text);
-    } catch {
-      throw new Error("Invalid JSON");
+    if (!response.ok) {
+        throw new Error("Failed to fetch venues");
     }
-
-  } catch (error) {
+    return await response.json();
+  }catch(error){
     throw new Error("Invalid JSON response");
   }
-};
-
-export default getVenues;
+}
